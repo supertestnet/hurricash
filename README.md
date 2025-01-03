@@ -43,9 +43,9 @@ This mechanism disincentivizes theft attempts game-theoretically: the thief stan
 
 A user can transfer an entire pooled utxo to one other person (selected in advance) if he makes the withdrawal address an htlc to which he knows the preimage. If he *doesn’t* disclose the preimage, he gets his money back after 2 weeks. If he *does* disclose the preimage, his preselected recipient can take the money.
 
-### Increasing the outputs
+### Adding channels
 
-The protocol described above has everyone presign *one* transaction for each user allowing them to sweep their money from the midstate of any round. That "sweep" transaction has two outputs: one puts all of that user's money in an address the user chose in advance, the other is a bond that will burn double that amount if the user tries to withdraw from the pool multiple times. To enable many off-chain transfers, have everyone presign k transactions, each of which has *three* outputs: one gives the user some percentage of his funds, the next gives his channel counterparty the remainder, and the third is the bond.
+The protocol described above has everyone presign *one* transaction for each user allowing them to sweep their money from the midstate of any round. That "sweep" transaction has two outputs: one puts all of that user's money in an address the user chose in advance, the other is a bond that will burn double that amount if the user tries to withdraw from the pool multiple times. To enable users to have a "channel," have every user pick a channel counterparty in advance, and have everyone in the multisig presign k transactions, each of which has *three* outputs: one gives the user some percentage of his funds, the next gives his channel counterparty the remainder, and the third is the bond.
 
 ### Enabling multiple off-chain transfers
 
