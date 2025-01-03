@@ -47,7 +47,7 @@ The protocol described above has everyone presign *one* transaction for each use
 
 ### Enabling multiple off-chain transfers
 
-Each of the k transactions uses a different tapleaf in the midstate, and each one distributes the funds differently to the user and his counterparty (e.g. 90/10, 80/20, 70/30, etc.). Each of these transactions is also timelocked, and the timelock gets lower and lower in each transaction that pays the user's counterparty a larger amount. A user pays their counterparty by giving him a 32 byte preimage to a hash that "guards" the tapleaf that pays him the amount the user wants him to have. With that preimage, the user's counterparty can spend from the midstate and thus pay himself the amount desired by the user. As long as each “larger” amount has a smaller timelock, the channel counterparty can broadcast whichever one gives him the most money.
+Each of the k transactions uses a different tapleaf in the midstate, and each one distributes the funds differently to the user and his counterparty (e.g. 90/10, 80/20, 70/30, etc.). Each of these transactions is also timelocked, and the timelock gets lower and lower in each transaction that pays the user's counterparty a larger amount. A user pays their counterparty by giving him a 32 byte preimage to a hash that "guards" the tapleaf that pays him the amount the user wants him to have. With that preimage, the user's counterparty can spend from the midstate and thus pay himself the amount desired by the user. As long as each “larger” amount has a smaller timelock, the channel counterparty can broadcast whichever one gives him the most money, so long as the user gave him the preimage that "unlocks" that tapleaf.
 
 ### Connecting it to lightning (send only)
 
