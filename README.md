@@ -59,7 +59,7 @@ In each channel created via this pooling scheme, one party is always the sender 
 
 # "Happy paths" and "sad paths"
 
-The above-described mechanism allows for the creation of off-chain channels connected to the lightning network, and from which every user can exit without help from the other users. But the "unilateral exit" mechanism takes 2 transactions (multisig -> midstate, midstate -> final state) and, since each user has *two* channels (one for sending, one for receiving), it essentially takes 4 transactions to fully exit. This is inefficient, so I call the use of the unilateral exit mechanism the "sad path."
+The hurricash scheme, as described so far, allows for the creation of off-chain channels connected to the lightning network, and from which every user can exit without help from the other users. But the "unilateral exit" mechanism takes 2 transactions (multisig -> midstate, midstate -> final state) and, since each user has *two* channels (one for sending, one for receiving), it essentially takes 4 transactions to fully exit. This is inefficient, so I call the use of the unilateral exit mechanism the "sad path."
 
 But I think there is at least sometimes a way to do a "happy path." If a user sends their entire balance out through lightning, so that all of their money goes to their counterparty and they receive an equivalent amount via lightning, then the user can give their counterparty their private key, because they don't need it anymore.
 
