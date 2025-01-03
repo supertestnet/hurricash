@@ -21,7 +21,7 @@ Have n people prepare and sign a coinjoin that funds an n of n multisig with Q s
 
 ### Rounds
 
-Before the users share their coinjoin sigs with one another, they generate n presigned txs, to which each user gets a copy. Each presigned tx defines a “round” (e.g. round 1, round 2...round n) within which a utxo worth Q sats is created using the pooled funds, and the remainder, if any, returns to the multisig, ready for use in the next round, if any.
+Before the users share their coinjoin sigs with one another, they generate n presigned transactions, and each user gets a copy of each transaction. Each presigned transaction defines a “round” (e.g. round 1, round 2...round n) within which a utxo worth Q sats is created using the pooled funds, and the remainder, if any, returns to the multisig, ready for use in the next round, if any.
 
 ### Midstate
 
