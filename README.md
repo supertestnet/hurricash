@@ -29,11 +29,11 @@ In each round, the Q-sat utxo created in that round is locked to a “midstate a
 
 ### Bonds
 
-To withdraw from the midstate address, a user has to supply the n-of-n signatures for their script path and reveal a “withdrawal secret” – a different one in each round for each user. The n-of-n sigs are signed with sighash_all | anyone_can_pay and they force the user to do two things: (1) the user must move the money to an address they chose in advance, before anyone deposited money into the multisig, and (2) the user must fund a “fidelity bond” that is worth 2 times the value of Q. The fidelity bond’s script allows anyone to burn the withdrawer’s bond, but only if they know *two* of the withdrawer’s withdrawal secrets.
+To withdraw from the midstate address, a user has to supply the n-of-n signatures for their script path and reveal a “withdrawal secret” – a different one in each round for each user. The n-of-n sigs are signed with sighash_all | anyone_can_pay and they force the user to do two things: (1) the user must move the money to an address they chose in advance, before anyone deposited money into the multisig, and (2) the user must fund a “fidelity bond” that is worth 2 times the value of Q.
 
 ### Penalty mechanism
 
-If the withdrawer tries to steal from the coinpool by withdrawing twice (i.e. in two different rounds), they will almost certainly lose Q sats as long as anyone is paying attention to the theft attempt. This mechanism disincentivizes theft attempts game-theoretically: the thief stands to *lose* Q instead of *gaining* Q, so they will probably not do it. Assuming the user has *not* tried to withdraw twice, no one can burn his or her funds, so after a period of 3 days, he or she can collect his or her bond and all is well.
+The fidelity bond’s script allows anyone to burn the withdrawer’s bond, but only if they know *two* of the withdrawer’s withdrawal secrets. If the withdrawer tries to steal from the coinpool by withdrawing twice (i.e. in two different rounds), they must disclose a different withdrawal secret each time, and thus they will almost certainly lose Q sats as long as anyone is paying attention to the theft attempt. This mechanism disincentivizes theft attempts game-theoretically: the thief stands to *lose* Q instead of *gaining* Q, so they will probably not do it. Assuming the user has *not* tried to withdraw twice, no one can burn his or her funds, so after a period of 3 days, he or she can collect his or her bond and all is well.
 
 ## Adding channels to the pool
 
