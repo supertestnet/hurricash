@@ -45,7 +45,7 @@ A user can transfer an entire pooled utxo to one other person (selected in advan
 
 The protocol described above has everyone presign *one* transaction for each user and that transaction has two outputs: one puts all of that user's money in an address the user chose in advance, the other is a bond that will burn double that amount if the user tries to withdraw from the pool multiple times. To enable many off-chain transfers, have everyone presign k transactions, each of which has *three* outputs: one gives the user some percentage of his funds, the next gives his channel counterparty the remainder, and the third is the bond.
 
-### Enablign multiple off-chain transfers
+### Enabling multiple off-chain transfers
 
 Each of the k transactions uses a different tapleaf in the midstate, and each one distributes the funds differently to the user and his counterparty (e.g. 90/10, 80/20, 70/30, etc.). Each of these transactions is also timelocked, and the timelock gets lower and lower in each transaction that pays the user's counterparty a larger amount. A user pays their counterparty by giving him a 32 byte preimage to a hash that "guards" the tapleaf that pays him the amount the user wants him to have. With that preimage, the user's counterparty can spend from the midstate and thus pay himself the amount desired by the user. As long as each “larger” amount has a smaller timelock, the channel counterparty can broadcast whichever one gives him the most money.
 
