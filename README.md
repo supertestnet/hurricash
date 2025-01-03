@@ -1,5 +1,5 @@
 # Hurricash
-A bitcoin channel factory and almost-coin-pool that works without a soft fork
+A bitcoin channel factory and almost-coinpool that works without a soft fork
 
 # Advantages of Hurricash
 
