@@ -45,7 +45,7 @@ A user can transfer an entire pooled utxo to one other person (selected in advan
 
 ### Increasing the outputs
 
-The protocol described above has everyone presign *one* transaction for each user and that transaction has two outputs: one puts all of that user's money in an address the user chose in advance, the other is a bond that will burn double that amount if the user tries to withdraw from the pool multiple times. To enable many off-chain transfers, have everyone presign k transactions, each of which has *three* outputs: one gives the user some percentage of his funds, the next gives his channel counterparty the remainder, and the third is the bond.
+The protocol described above has everyone presign *one* transaction for each user allowing them to sweep their money from the midstate of any round. That "sweep" transaction has two outputs: one puts all of that user's money in an address the user chose in advance, the other is a bond that will burn double that amount if the user tries to withdraw from the pool multiple times. To enable many off-chain transfers, have everyone presign k transactions, each of which has *three* outputs: one gives the user some percentage of his funds, the next gives his channel counterparty the remainder, and the third is the bond.
 
 ### Enabling multiple off-chain transfers
 
