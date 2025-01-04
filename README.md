@@ -10,7 +10,7 @@ A bitcoin channel factory and almost-coinpool that works without a soft fork
 - it enables cheaper channel opens (this is a consequence of channels being invisible -- a batch channel open today would have many outputs, this scheme reduces the number of outputs to one, though there'd be some more if there's change)
 - it enables fewer channel closure transactions (in the happy path, everyone in the multisig exits via lightning, leaving the routing node or nodes with all the keys to the multisig, so they can sweep the funds from it cooperatively)
 - unlike Ark, it does not need a coordinator
-- unlike Ark, pooled funds do not have a timelock on them that causes them to expire -- you can stay in the pool indefinitely
+- unlike Ark, pooled funds do not have a timelock on them that causes them to expire -- you can stay in the pool indefinitely (though you still have to check in on them sometimes, so there is an occasional-liveness requirement, similar to lightning wallets)
 
 # How it works
 
