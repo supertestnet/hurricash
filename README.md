@@ -17,7 +17,7 @@ A bitcoin channel factory and almost-coinpool that works without a soft fork
 
 ### Coinjoin
 
-Have n people prepare and sign a coinjoin that funds an n of n multisig with Q sats apiece. It is important that Q be the same for every user and that every user has one of the keys to the multisig.
+Have n people prepare and sign a coinjoin that funds an n of n multisig with Q sats apiece. It is important that Q be the same for every user and that every user has one of the keys to the multisig. In the "happy path," the money will stay in this multisig until every user is done using it and perform a cooperative exit, described below in the section called `"Happy paths" and "sad paths"`. Everything else on this page (starting with Rounds) is part of the "sad path" and is only used if someone wants to exit unilaterally (i.e. without needing to cooperate with any other user).
 
 ### Rounds
 
