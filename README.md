@@ -4,12 +4,13 @@ A bitcoin channel factory and almost-coinpool that works without a soft fork
 # Advantages of Hurricash
 
 - it doesn’t need a soft fork
-- you can put your money in it without worrying that your utxos will expire (though when you *receive* a payment you *do* have a time limit to sweep it or risk your counterparty broadcasting a transaction that pays you less money)
 - it scales linearly with the number of users – O(n) instead of O(n**2)
 - users can exit in any order, at any time, without coordinating with other users
 - it supports invisible channels (meaning you can open a channel without it appearing on the blockchain)
 - it enables cheaper channel opens (this is a consequence of channels being invisible -- a batch channel open today would have many outputs, this scheme reduces the number of outputs to one, though there'd be some more if there's change)
 - it enables fewer channel closure transactions (in the happy path, everyone in the multisig exits via lightning, leaving the routing node or nodes with all the keys to the multisig, so they can sweep the funds from it cooperatively)
+- unlike Ark, it does not need a coordinator
+- unlike Ark, utxos do not expire (except when you *receive* a payment -- in that case, if you get ejected from the pool, you have a time limit to sweep your funds or risk your counterparty broadcasting a transaction that pays you less money)
 
 # How it works
 
