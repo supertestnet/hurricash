@@ -8,7 +8,7 @@ A bitcoin channel factory and almost-coinpool that works without a soft fork
 - it scales linearly with the number of users – O(n) instead of O(n**2)
 - users can exit in any order, at any time, without coordinating with other users
 - it supports invisible channels (meaning you can open a channel without it appearing on the blockchain)
-- it enables cheaper channel opens (this is a consequence of the first thing -- a batch channel open today would have many outputs, this scheme reduces the number of outputs to one, though there'd be some more if there's change)
+- it enables cheaper channel opens (this is a consequence of channels being invisible -- a batch channel open today would have many outputs, this scheme reduces the number of outputs to one, though there'd be some more if there's change)
 - it enables fewer channel closure transactions (in the happy path, everyone in the multisig exits via lightning, leaving the routing node or nodes with all the keys to the multisig, so they can sweep the funds from it cooperatively)
 
 # How it works
