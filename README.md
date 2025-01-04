@@ -21,11 +21,11 @@ Have n people prepare and sign a coinjoin that funds an n of n multisig with Q s
 
 ### Rounds
 
-Before the users share their coinjoin sigs with one another, they generate n presigned transactions, and each user gets a copy of each transaction. Each presigned transaction defines a “round” (e.g. round 1, round 2...round n) within which a utxo worth Q sats is created using the pooled funds, and the remainder, if any, returns to the multisig, ready for use in the next round, if any.
+Before the users share their coinjoin sigs with one another, they generate n presigned transactions, and each user gets a copy of each transaction. Each presigned transaction defines a “round” (e.g. round 1, round 2...round n) containing two transactions. The first transaction uses the pooled funds to create two outputs: one is a utxo worth Q sats, and the remainder, if any, returns to the multisig in a second output, ready for use in the next round, if any. The second transaction is described below in the section `Midstate` and creates the withdrawing user's final state.
 
 ### Midstate
 
-In each round, the Q-sat utxo created in that round is locked to a “midstate address” with n script paths, each of which lets a different user spend that Q-sat utxo, but only with n-of-n signatures (i.e. a signature from every other party; these signatures are also generated before anyone deposits money into the multisig).
+In each round, the Q-sat utxo created in that round is locked to a “midstate address” with n script paths. Each script path lets a different user spend that Q-sat utxo, but only with n-of-n signatures (i.e. a signature from every other party; these signatures are also generated before anyone deposits money into the multisig). This mechanism allows any user to withdraw from any midstate, in any order, in any round.
 
 ### Bonds
 
