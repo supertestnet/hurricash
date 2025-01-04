@@ -30,7 +30,7 @@ In each round, the Q-sat utxo created in that round is locked to a “midstate a
 
 ### Bonds
 
-To withdraw from the midstate address, a user has to supply the n-of-n signatures for their script path and reveal a “withdrawal secret” – a different one in each round for each user. The n-of-n sigs are signed with sighash_all | anyone_can_pay and they force the user to do two things: (1) the user must move the money to an address they chose in advance, before anyone deposited money into the multisig, and (2) the user must fund a “fidelity bond” that is worth 2 times the value of Q.
+To withdraw from the midstate address, a user has to supply the n-of-n signatures for their script path. The n-of-n sigs are signed with sighash_all | anyone_can_pay and they force the user to do two things: (1) the user must move the money to an address that they must withdraw it from within 1008 blocks in a transaction that reveals a “withdrawal secret” – a different one in each round for each user, otherwise anyone can spend it. (2) the user must fund a “fidelity bond” that is worth 2 times the value of Q.
 
 ### Penalty mechanism
 
