@@ -39,17 +39,15 @@ This mechanism disincentivizes theft attempts game-theoretically: the thief stan
 
 ## Adding channels to the pool
 
-### Enabling a one-time off-chain transfer
+### Multiple outputs
 
-A user can transfer an entire pooled utxo to one other person (selected in advance) if he makes the withdrawal address an htlc to which he knows the preimage. If he *doesn’t* disclose the preimage, he gets his money back after 2 weeks. If he *does* disclose the preimage, his preselected recipient can take the money.
-
-### Adding channels
-
-The protocol described above has everyone presign *one* transaction for each user allowing them to sweep their money from the midstate of any round. That "sweep" transaction has two outputs: one puts all of that user's money in an address the user chose in advance, the other is a bond that will burn double that amount if the user tries to withdraw from the pool multiple times. To enable users to have a "channel," have every user pick a channel counterparty in advance, and have everyone in the multisig presign k transactions, each of which has *three* outputs: one gives the user some percentage of his funds, the next gives his channel counterparty the remainder, and the third is the bond.
+The protocol described above has everyone presign *one* transaction for each user allowing them to finalize their state by withdrawing their money from the midstate of any round. That "finalization" transaction has two outputs: one puts all of that user's money in an address the user chose in advance, the other is a bond that will burn double that amount if the user tries to withdraw from the pool multiple times. To enable users to have a "channel," have every user pick a channel counterparty in advance, and have everyone in the multisig presign multiple "finalization" transactions for each user. Each one has *three* outputs: one gives the user some percentage of his funds, the next gives his channel counterparty the remainder, and the third is the bond.
 
 ### Enabling multiple off-chain transfers
 
-Each of the k transactions uses a different tapleaf in the midstate, and each one distributes the funds differently to the user and his counterparty (e.g. 90/10, 80/20, 70/30, etc.). Each of these transactions is also timelocked, and the timelock gets lower and lower in each transaction that pays the user's counterparty a larger amount. A user pays their counterparty by giving him a 32 byte preimage to a hash that "guards" the tapleaf that pays him the amount the user wants him to have. With that preimage, the user's counterparty can spend from the midstate and thus pay himself the amount desired by the user. As long as each “larger” amount has a smaller timelock, the channel counterparty can broadcast whichever one gives him the most money, so long as the user gave him the preimage that "unlocks" that tapleaf.
+Each of the finalization transactions for each user uses a different tapleaf in the midstate, and each one distributes the funds differently to the user and his counterparty (e.g. 90/10, 80/20, 70/30, etc.). How many distributions there are depends on how many finalization transactions are signed for each user, which is decided in advance, before anyone deposits any money into the multisig.
+
+Each finalization transaction is also timelocked, and the timelock gets lower and lower in each transaction that pays the user's counterparty a larger amount. A user pays their counterparty by giving him a 32 byte preimage to a hash that "guards" the tapleaf that pays him the amount the user wants him to have. With that preimage, the user's counterparty can spend from the midstate and thus pay himself the amount desired by the user. As long as each “larger” amount has a smaller timelock, the channel counterparty can broadcast whichever one gives him the most money, so long as the user gave him the preimage that "unlocks" that tapleaf.
 
 ### Connecting it to lightning (send only)
 
