@@ -35,7 +35,7 @@ To withdraw from the midstate address, a user has to supply the n-of-n signature
 
 The fidelity bond’s script has two spend paths. One is timelocked for 2016 blocks. After that period elapses, anyone can spend the withdrawer’s bond, but only if they know *two* of the withdrawer’s withdrawal secrets. If the withdrawer tries to steal from the pool by withdrawing twice (i.e. in two different rounds), they must disclose a different withdrawal secret each time, and thus they will almost certainly lose Q sats as long as anyone is paying attention to the theft attempt. Miners will presumably get the funds, because someone will prepare a transaction during the 2016 block period that spends the entire value of the bond as fees.
 
-This mechanism disincentivizes theft attempts game-theoretically: the thief stands to *lose* Q instead of *gaining* Q, so they will probably not do it. Assuming the user has *not* tried to withdraw twice, no one could use the first script path to spend his or her funds, so the user can use the other spend path: after a period of 2026 blocks, he or she can collect his or her bond and all is well.
+This mechanism disincentivizes theft attempts game-theoretically: the thief stands to *lose* Q instead of *gaining* Q, so they will probably not do it. Assuming the user has *not* tried to withdraw twice, no one could use the first script path to spend his or her funds, so the user can use the other spend path. It stipulates that after a period of 2026 blocks, the user can collect his or her bond and all is well.
 
 ## Adding channels to the pool
 
