@@ -22,7 +22,7 @@ I discovered this while testing a signing ceremony with 15 users in it, during w
 
 if there are 15 users, that means there are 15 rounds, and for each user in each round the users all-together need to create 15 signatures in total. Meaning in round 1 they need to create 225 sigs (15 apiece for 15 different users), and in round 2 they need to do the same, and so forth, 15 times in a row. Which means they need to create 15 \* 15 \* 15 = 3375 signatures. Each \*individual\* user only needs to create 15 \* 15 = 225 signatures -- they get the others from the other users -- but that's still exponential.
 
-When you \*aggregate\* the signatures using musig, you end up with only a linear growth in the number of signatures that each user needs to \*store\* to ensure their personal ability to exit -- so in terms of \*storage\* it's linear -- but signature \*creation\* is the important part to me, and that part is exponential i.e. n\*\*2. And verification is almost n\*\*3. Very sad. In light of this, I don't think hurricash is better than the presigned-tx variant of Stu's ctv coinpool.
+When you \*aggregate\* the signatures using musig, you end up with only a linear growth in the number of signatures that each user needs to \*store\* to ensure their personal ability to exit -- so in terms of \*storage\* it's linear -- but signature \*creation\* is the important part to me, and that part is exponential i.e. n\*\*2. And verification is almost n\*\*3. Very sad. In light of this, I don't think hurricash is better than the presigned-tx variant of [Stu's ctv coinpool](https://github.com/stutxo/op_ctv_payment_pool).
 
 # How it works
 
