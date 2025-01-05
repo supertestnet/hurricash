@@ -4,13 +4,25 @@ A bitcoin channel factory and almost-coinpool that works without a soft fork
 # Advantages of Hurricash
 
 - it doesn’t need a soft fork
-- it scales linearly with the number of users – O(n) instead of O(n**2)
+- it scales linearly with the number of users – O(n) instead of O(n**2) \[\*\*EDIT: See retraction below\]
 - users can exit in any order, at any time, without coordinating with other users
 - it supports invisible channels (meaning you can open a channel without it appearing on the blockchain)
 - it enables cheaper channel opens (this is a consequence of channels being invisible -- a batch channel open today would have many outputs, this scheme reduces the number of outputs to one, though there'd be some more if there's change)
 - it enables fewer channel closure transactions (in the happy path, everyone in the multisig exits via lightning, leaving the routing node or nodes with all the keys to the multisig, so they can sweep the funds from it cooperatively)
 - unlike Ark, it does not need a coordinator
 - unlike Ark, pooled funds do not have a timelock on them that causes them to expire -- you can stay in the pool indefinitely (though you still have to check in on them sometimes, so there is an occasional-liveness requirement, similar to lightning wallets)
+
+# Retraction
+
+I discovered a sad piece of info today while implementing hurricash. While there is only linear growth in the number of signatures you need to \*store\* for hurricash to work, the number of signature shares you must \*create\* grows exponentially with the number of users -- O(n\*\*2).
+
+Moreover, the number of signature shares you must \*validate\* grows at a rate very close to O(n\*\*3) -- it's slightly less because you don't have to validate your \*own\* signature shares.
+
+I discovered this while testing a signing ceremony with 15 users in it, during which I noticed a significant slowdown. Investigating my code, I realized the problem:
+
+if there are 15 users, that means there are 15 rounds, and for each user in each round the users all-together need to create 15 signatures in total. Meaning in round 1 they need to create 225 sigs (15 apiece for 15 different users), and in round 2 they need to do the same, and so forth, 15 times in a row. Which means they need to create 15 \* 15 \* 15 = 3375 signatures. Each \*individual\* user only needs to create 15 \* 15 = 225 signatures -- they get the others from the other users -- but that's still exponential.
+
+When you \*aggregate\* the signatures using musig, you end up with only a linear growth in the number of signatures that each user needs to \*store\* to ensure their personal ability to exit -- so in terms of \*storage\* it's linear -- but signature \*creation\* is the important part to me, and that part is exponential i.e. n\*\*2. And verification is almost n\*\*3. Very sad. In light of this, I don't think hurricash is better than the presigned-tx variant of Stu's ctv coinpool.
 
 # How it works
 
