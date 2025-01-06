@@ -1,6 +1,9 @@
 # Hurricash
 A bitcoin channel factory and almost-coinpool that works without a soft fork
 
+# Video demo
+https://github.com/user-attachments/assets/a9caef5e-23a5-42dc-9687-6c0bd5f5bce8
+
 # Advantages of Hurricash
 
 - it doesn’t need a soft fork
