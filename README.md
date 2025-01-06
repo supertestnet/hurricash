@@ -16,8 +16,8 @@ https://github.com/user-attachments/assets/a9caef5e-23a5-42dc-9687-6c0bd5f5bce8
 
 - everyone has to deposit the same amount to the pool
 - everyone has to exit with the same amount
-- any payments made in between are deducted from *everyone's* balance -- so everyone pays
-- it is an "interactive" coinpool -- meaning you can't pay anyone if any pool member is offline or unwilling to cosign your payment (though you *can* just leave and then make your payment with regular bitcoin)
+- any payments made in between are divided up among all participants such that an equal share of the payment is deducted from everyone's balance
+- it is an "interactive" protocol -- meaning you can't pay anyone if any pool member is offline or unwilling to cosign your payment (though you *can* just leave and then make your payment with regular bitcoin)
 
 # How it works
 
