@@ -1,5 +1,5 @@
 # Hurricash
-It's almost like a coinpool except everyone has to have the same departing when they exit
+It's almost like a coinpool except everyone has to exit with the same amount as everyone else
 
 # Video demo
 https://github.com/user-attachments/assets/a9caef5e-23a5-42dc-9687-6c0bd5f5bce8
