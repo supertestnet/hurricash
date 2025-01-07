@@ -350,7 +350,7 @@
                 var outputs = [];
                 pubkeys.forEach( pubkey => {
                     outputs.push({
-                        value: 10_100,
+                        value: funding_amount + average_bytesize_of_each_users_input,
                         scriptPubKey: [ 1, pubkey ],
                     });
                 });
@@ -368,7 +368,7 @@
                 var sig = tapscript.Signer.taproot.sign( privkey, txdata, 0 ).hex;
                 txdata.vin[ 0 ].witness = [ sig ];
                 var txhex = tapscript.Tx.encode( txdata ).hex;
-                console.log( `broadcast this tx that gives every user 10100 sats:` );
+                console.log( `broadcast this tx that gives every user ${funding_amount + average_bytesize_of_each_users_input} sats:` );
                 console.log( txhex );
                 initial_transaction = txhex;
 
@@ -383,7 +383,7 @@
                 coinjoin = tapscript.Tx.create({
                     vin,
                     vout: [{
-                        value: 100_000,
+                        value: funding_amount * num_of_users,
                         scriptPubKey: tapscript.Address.toScriptPubKey( multisig ),
                     }],
                 });
