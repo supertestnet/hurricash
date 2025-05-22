@@ -7,7 +7,7 @@ https://github.com/user-attachments/assets/a9caef5e-23a5-42dc-9687-6c0bd5f5bce8
 # Advantages of Hurricash
 
 - it doesn’t need a soft fork
-- as the number of users increases, the amount of cpu usage needed to create the pool grows with a low exponent -- O(n**3) -- rather than O(n!), which was the state of the art before this (see, for example, [Stupot](https://github.com/stutxo/op_ctv_payment_pool))
+- as the number of users increases, the amount of cpu usage needed to create the pool grows with a low exponent -- O(n**3) -- rather than O(n!), which was the state of the art before this (see, for example, [Grugpool](https://github.com/stutxo/op_ctv_payment_pool))
 - users can exit in any order, at any time, without coordinating with other users
 - unlike Ark, it does not need a central coordinator
 - unlike Ark, pooled funds do not have a timelock on them -- users can stay in the pool indefinitely
